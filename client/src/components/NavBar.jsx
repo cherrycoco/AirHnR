@@ -113,6 +113,19 @@ class NavBar extends React.Component{
         })()}
       </div>
     </div>
+    // <div>
+    //   <AppBar position="static">
+    //     <Toolbar>
+    //       <input type="text" style={{width: 700}}  placeholder="Anywhere..." id="place" onChange={this.handleChange}/>
+    //       <button value={$("#place").val()} onClick={()=>{this.handleSearchClick(); this.props.triggerView('searchResults')}}>Go</button>
+    //       <Typography onClick={() => this.props.triggerView('default')} style={{color:"white", font:"Helvetica", width: "100px"}}>
+    //       Air HnR
+    //       </Typography>
+    //       {this.props.isUserLoggedIn ? <NavLogged logOut={this.props.userLogOut} user={this.props.user}/> : 
+    //       <NotLoggedIn userLoggedIn={this.props.userLoggedIn} triggerView={this.props.triggerView} login={this.props.login}/>}
+    //     </Toolbar>
+    //   </AppBar>
+    // </div>
   );
 }
 }
