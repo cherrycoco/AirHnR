@@ -16,6 +16,7 @@ import Search from './Search.jsx';
 import 'react-dates/initialize';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import Calendar from './Calendar.jsx';
 
 const styles = {
   sticky: {
@@ -44,6 +45,22 @@ class NavBar extends React.Component{
   //   console.log("state",this.state.searchValue)
   // }
 
+  renderDatePicker () {
+    return (
+      <div className='calendar'>
+        <DateRangePicker
+        startDate={this.props.startDate} // momentPropTypes.momentObj or null,
+        startDateId={'12'}
+        endDate={this.props.endDate} // momentPropTypes.momentObj or null,
+        endDateId={'100000000'}
+        onDatesChange={this.props.updateDates} // PropTypes.func.isRequired,
+        focusedInput={this.props.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+        onFocusChange={this.props.updateFocusedInput} // PropTypes.func.isRequired,
+        onClose={this.props.handleDateClick}
+        />
+      </div>
+    )
+  }
 
   render() {
 
@@ -58,21 +75,15 @@ class NavBar extends React.Component{
         if (this.props.view !== 'default') {
           return (
             <div className='nav-bar-search'>
-              {/* <div className='nav-bar-search'> */}
-                <Search handleSearchClick={this.props.handleSearchClick}/>
-              {/* </div> */}
-              {/* <div className='nav-bar-dates'> */}
-                <DateRangePicker
-                  startDate={this.props.startDate} // momentPropTypes.momentObj or null,
-                  startDateId={'12'}
-                  endDate={this.props.endDate} // momentPropTypes.momentObj or null,
-                  endDateId={'100000000'}
-                  onDatesChange={this.props.updateDates} // PropTypes.func.isRequired,
-                  focusedInput={this.props.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                  onFocusChange={this.props.updateFocusedInput} // PropTypes.func.isRequired,
-                  onClose={this.props.handleDateClick}
-                />
-              {/* </div> */}
+              <Search handleSearchClick={this.props.handleSearchClick}/>
+              <Calendar
+                startDate={this.props.startDate} // momentPropTypes.momentObj or null,
+                endDate={this.props.endDate} // momentPropTypes.momentObj or null,
+                updateDates={this.props.updateDates} // PropTypes.func.isRequired,
+                focusedInput={this.props.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                updateFocusedInput={this.props.updateFocusedInput} // PropTypes.func.isRequired,
+                handleDateClick={this.props.handleDateClick}
+              />  
             </div>
           )
         }
@@ -95,34 +106,15 @@ class NavBar extends React.Component{
                 userLoggedIn={this.props.userLoggedIn} 
                 triggerView={this.props.triggerView} 
                 login={this.props.login}
+                startDate={this.props.startDate}
               />
             )
           }
         })()}
       </div>
     </div>
-    // <div>
-    //   <AppBar position="static">
-    //     <Toolbar>
-    //       <input type="text" style={{width: 700}}  placeholder="Anywhere..." id="place" onChange={this.handleChange}/>
-    //       <button value={$("#place").val()} onClick={()=>{this.handleSearchClick(); this.props.triggerView('searchResults')}}>Go</button>
-    //       <Typography onClick={() => this.props.triggerView('default')} style={{color:"white", font:"Helvetica", width: "100px"}}>
-    //       Air HnR
-    //       </Typography>
-    //       {this.props.isUserLoggedIn ? <NavLogged logOut={this.props.userLogOut} user={this.props.user}/> : 
-    //       <NotLoggedIn userLoggedIn={this.props.userLoggedIn} triggerView={this.props.triggerView} login={this.props.login}/>}
-    //     </Toolbar>
-    //   </AppBar>
-    // </div>
   );
 }
 }
-
-// NavBar.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
-
-// export default withStyles(styles)(NavBar);
 
 export default NavBar;

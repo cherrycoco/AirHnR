@@ -56,7 +56,7 @@ class Trips extends React.Component {
     super(props);
 
     this.state = {
-      bookings: bookingData,
+      bookings: []
     }
   }
 
@@ -68,7 +68,6 @@ class Trips extends React.Component {
     fetch(`/api/bookings/${userId}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
       this.setState({
         bookings: data
       });
@@ -78,18 +77,18 @@ class Trips extends React.Component {
   render () {
     return (
       <div>
-        <h2 id='past-trips'>Past Trips</h2>
+        <h2 id='past-trips'>Trips</h2>
         <div className='trips'>
           {this.state.bookings.map((trip, idx) => (
             <Trip className='trip' key={idx} booking={trip} />
           ))}
         </div>
-        <h2 id='upcoming-trips'>Upcoming Trips</h2>
+        {/* <h2 id='upcoming-trips'>Upcoming Trips</h2>
         <div className='trips'>
           {this.state.bookings.map((trip, idx) => (
             <Trip className='trip' key={idx} booking={trip} />
           ))}
-        </div>
+        </div> */}
       </div>
     )
   }

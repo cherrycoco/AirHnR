@@ -8,18 +8,6 @@ class Trip extends React.Component {
     super(props);
   }
 
-  // renderRating () {
-  //   return (
-  //     <div>
-  //       <StarBorder />
-  //       <StarBorder />
-  //       <StarBorder />
-  //       <StarBorder />
-  //       <StarBorder />
-  //     </div>
-  //   )
-  // }
-
   render () {
     return (
       <div className='trip-container'>
