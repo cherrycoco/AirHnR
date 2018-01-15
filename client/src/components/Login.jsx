@@ -61,6 +61,7 @@ class Login extends React.Component {
     // this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.badLuck = this.badLuck.bind(this);
   }
 
   handleOpen() {
@@ -86,7 +87,9 @@ class Login extends React.Component {
     this.props.triggerView('createAccount');
     this.handleClose();
   }
-
+  badLuck() {
+    alert(`Bad luck. We don't have this feature`);
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -103,8 +106,8 @@ class Login extends React.Component {
             <IconButton aria-label="Delete" onClick={this.handleClose}>
               <ClearIcon />
             </IconButton>
-            <Button style={buttonStyle} color='primary' >Log in with Facebook</Button>
-            <Button style={buttonStyle} >Log in with Google</Button>
+            <Button style={buttonStyle} color='primary' onClick={this.badLuck}>Log in with Facebook</Button>
+            <Button onClick={this.badLuck} style={buttonStyle}>Log in with Google</Button>
             <Divider />
             or
             <form className={classes.container} autoComplete="off" noValidate>
@@ -142,7 +145,7 @@ class Login extends React.Component {
             </form>
             <Button style={buttonStyle} color='accent' onClick={() => this.handleLogin(this.state.email, this.state.password)}>Log in</Button>
             {this.state.errorMessage ? <div> {this.state.errorMessage} </div> : null}
-            <a onClick={() => alert(`Bad luck. We don't have this feature`)}>Forgot password?</a>
+            <a onClick={this.badLuck}>Forgot password?</a>
             <Divider />
             Don’t have an account? <a id='sign-up'onClick={this.createAccount.bind(this)}>Sign up</a>
           </div>
