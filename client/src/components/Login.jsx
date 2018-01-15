@@ -142,7 +142,7 @@ class Login extends React.Component {
             </form>
             <Button style={buttonStyle} color='accent' onClick={() => this.handleLogin(this.state.email, this.state.password)}>Log in</Button>
             {this.state.errorMessage ? <div> {this.state.errorMessage} </div> : null}
-            <a>Forgot password?</a>
+            <a onClick={() => alert(`Bad luck. We don't have this feature`)}>Forgot password?</a>
             <Divider />
             Don’t have an account? <a id='sign-up'onClick={this.createAccount.bind(this)}>Sign up</a>
           </div>
