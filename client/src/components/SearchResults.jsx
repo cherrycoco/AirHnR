@@ -79,9 +79,11 @@ class SearchResults extends React.Component {
       );
     } else {
       return (
-        <div style={{margin: '10% 5%'}}>
-          <img src="https://www.bhiner.com/img/noResult.png" alt="No Results"/>
-          <div style={{marginLeft: '10%'}}>
+        <div className='listing-details' style={{marginTop: '10%'}}>
+          <div className='listings' style={{marginLeft: '20%'}}>
+            <img src="https://www.bhiner.com/img/noResult.png" alt="No Results"/>
+          </div>
+          <div className='map-container' style={{marginLeft: '10%', marginTop: '20%'}}>
             <h4>No results found</h4>
             <p>Please search for a different location</p>
           </div>

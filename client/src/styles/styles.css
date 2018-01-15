@@ -43,6 +43,12 @@ body{
   justify-self: end;
 }
 
+#book-button {
+  margin-left: 10px;
+  margin-top: 5px;
+  border: 1px solid #DBDBDB;
+}
+
 #place {
   height: 50px;
   width: 500px;
@@ -606,6 +612,7 @@ header {
 
 #past-trips {
   margin-left: 40px;
+  margin-top: 90px;
 }
 
 #upcoming-trips {

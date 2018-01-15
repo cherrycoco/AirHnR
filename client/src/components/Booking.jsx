@@ -12,7 +12,7 @@ class Booking extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      nights: this.props.endDate.diff(this.props.startDate, 'days') - 1
+      nights: this.props.endDate.diff(this.props.startDate, 'days')
     }
   }
 
@@ -35,7 +35,6 @@ class Booking extends React.Component {
         <div className='booking-price'>
           <span className='price-perNight'>{`$${this.props.listing.price}`}</span>
           <span className='perNight-text'>per night</span>
-          {/* {this.renderRating()} */}
           <br/>
           <Stars
             rating={this.props.listing.average_stars}
@@ -45,7 +44,7 @@ class Booking extends React.Component {
         </div>
 
         <div className='booking-dates'>
-          <DateRangePicker
+          <DateRangePicker 
             startDate={this.props.startDate} // momentPropTypes.momentObj or null,
             startDateId={'3'}
             endDate={this.props.endDate} // momentPropTypes.momentObj or null,
@@ -54,6 +53,7 @@ class Booking extends React.Component {
             focusedInput={this.props.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
             onFocusChange={this.props.updateFocusedInput} // PropTypes.func.isRequired,
             onClose={this.props.handleDateClick}
+            disabled
           />
         </div>
 
