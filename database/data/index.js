@@ -6,6 +6,9 @@ const locationdata = require('./locations.json');
 const reviewdata = require('./reviews.json')
 const nyll = require('./ny_lat_long.json');
 const sfll = require('./sf_lat_long.json');
+const tokyoll = require('./tokyo_lat_long.json');
+const lall = require('./la_lat_long.json');
+const capell = require('./cape_town_lat_long.json');
 const house_pics = require('./pics.json');
 const home_types = ['Home', 'Aprtment', 'Abode', 'Townhouse', 'Hole In the Wall', 'Hole In the Ground', 'Mansion', 'Castle', 'Dump', 'Slum', 'House', 'Flat', 'Palace', 'Estate', 'Dwelling', 'Box', 'Co-Op', 'Lean-To', 'Cardboard Box', 'Shanty', 'Cairn', 'Alleyway', 'Flophouse', 'Couch', 'Basement', 'Attic', 'Loft', 'Condo', 'Condominium', 'Duplex', 'Shed', 'Barn', 'Penthouse', 'Suite', 'Cabin', 'Shack', 'Love Shack', 'Domicile', 'Dormitory', 'Closet', 'Home', 'Apartment', 'Home', 'Apartment', 'Flat', 'Home', 'Apartment', 'Home', 'Apartment', 'Flat', 'Home', 'Apartment', 'Home', 'Apartment', 'Flat', 'Home', 'Apartment', 'Home', 'Apartment', 'Flat', 'House', 'House', 'House', 'House', 'Loft', 'Loft', 'Loft', 'Studio', 'Studio', 'Studio', 'Room'];
 const room_types = ['Couch', 'Room', 'Studio', 'House', 'Entire House', 'Private Room', 'Entire Apartment'];
@@ -62,9 +65,9 @@ const generateHouseRules = () => {
 };
 
 const createUsers = () => {
-  let address_info = [['NewYork','NY', '10001'], ['San Francisco', 'CA', '94117']];
+  let address_info = [['New York', 'NY', '10001'], ['San Francisco', 'CA', '94117'], ['Los Angeles', 'CA', '90210'], ['Cape Town', 'South Africa', '85673'], ['Tokyo', 'Japan', '64947']];
   return userdata.map( (dp, idx) => { 
-    let city = idx < userdata.length / 2 ? 0 : 1;
+    let city = idx % address_info.length;
     let index = dp.email.indexOf('@');
     let email = dp.email.slice(0, index) + idx.toString() + dp.email.slice(index);
     return {
@@ -88,19 +91,20 @@ const createUsers = () => {
 };
 
 const createLocations = () => {
-  let address_info = [['New York', 'NY', '10001'], ['San Francisco', 'CA', '94117']];
+  let citylls = [sfll, nyll, lall, capell, tokyoll];
+  let address_info = [['New York', 'NY', '10001'], ['San Francisco', 'CA', '94117'], ['Los Angeles', 'CA', '90210'], ['Cape Town', 'South Africa', '85673'], ['Tokyo', 'Japan', '64947']];
   return locationdata.map((dp, idx) => {
-    let city = idx < locationdata.length / 2 ? 0 : 1;
-    let cityidx = idx < locationdata.length - 1 ? idx : idx - 101;
-    let cityll = city === 1 ? sfll : nyll;
+    let city = Math.floor(idx / 200);
+    let cityidx = idx % 200;//idx < locationdata.length - 1 ? idx : idx - 101;
+    let cityll = citylls[city];
     return {
       name: `${toTitleCase(dp.adjective)} ${address_info[city][0]} ${pickOne(home_types)}`,
       tagline: dp.tagline,
       description: dp.description,
       image_url: pickOne(house_pics),
       room_type: pickOne(room_types),
-      max_guests: numberInRange(1, 5),
-      beds: numberInRange(1, 6),
+      max_guests: pickOne([1, 2, 2, 3, 3, 4, 4, 4, 4, 5, 5, 6, 6]),
+      beds: pickOne([1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 4, 4, 5, 6]),
       bathrooms: numberInRange(1, 3),
       latitude: cityll[cityidx].latitude,
       longitude: cityll[cityidx].longitude,
@@ -209,14 +213,14 @@ const createGuestReviews = (num) => {
   });
 };
 
-const users = createUsers(); //200
-const locations = createLocations(); //500
+const users = createUsers(); //50
+const locations = createLocations(); //1000 
 const listings = createListings(locations.length);
 const bookings = createBookings(300);
-const favorites = createFavorites(500);
+const favorites = createFavorites(10);
 const location_reviews = createLocationReviews(800);
-const host_reviews = createHostReviews(600);
-const guest_reviews = createGuestReviews(500);
+const host_reviews = createHostReviews(10);
+const guest_reviews = createGuestReviews(10);
 
 console.log('NOTE: THE FOLLOWING EXAMPLES DO NOT INCLUDE DB-GENERATED KEYS');
 console.log('EXAMPLE user:', users[0]);

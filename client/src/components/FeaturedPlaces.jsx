@@ -59,6 +59,10 @@ let FeaturedPlaces = (props) => {
     {
       place: 'Los Angeles',
       imgUrl: 'https://a0.muscache.com/im/pictures/7bff51c1-3c35-47a5-a86c-5ea75ab6be6c.jpg?aki_policy=poster'
+    },
+    {
+      place: 'New York',
+      imgUrl: 'https://image.ibb.co/hbaNHR/nytravel.png'
     }
   ];
   let places = arrayOfItems.map((val, index) => {
