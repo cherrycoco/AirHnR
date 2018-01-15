@@ -3,8 +3,8 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import Stars from './Stars';
 
 const style = {
-  height: '100%',
-  width: '50%',
+  height: '90%',
+  width: '40%',
   backgroundColor: ''
 };
 

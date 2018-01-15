@@ -272,6 +272,7 @@ class App extends React.Component {
           guests={this.state.guests}
           login={this.login}
           isUserLoggedIn={this.state.user ? true : false}
+          triggerView={this._triggerViewChange}
         />;
     } else if (currentView === 'checkout') {
       showPage =
@@ -332,6 +333,7 @@ class App extends React.Component {
           open={this.state.loginOpen} 
           openLogin={this.openLogin}
           closeLogin={this.closeLogin}
+          triggerView={this._triggerViewChange}
         />
       </div>
     );
