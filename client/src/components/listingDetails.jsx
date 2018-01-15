@@ -163,7 +163,7 @@ class ListingDetails extends React.Component {
           openLogin={this.props.openLogin}
           login={this.props.login}
           isUserLoggedIn={this.props.isUserLoggedIn}
-          triggerView={this.props.triggerView}/>
+          />
         </div>
         <div className='listing-img'>
           <img src={this.props.listing.image_url}/> 

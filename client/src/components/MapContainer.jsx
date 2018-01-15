@@ -3,8 +3,8 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import Stars from './Stars';
 
 const style = {
-  height: '100%',
-  width: '50%',
+  height: '90%',
+  width: '40%',
   backgroundColor: ''
 };
 
@@ -33,7 +33,7 @@ export class MapContainer extends Component {
   onMarkerClick(props, marker, e) {
     if (this.state.locationSelectedOnMap === props.listing) {
       this.setState({
-        showInfo: false,
+        showInfo: !this.state.showInfo,
       });
     }
     else {

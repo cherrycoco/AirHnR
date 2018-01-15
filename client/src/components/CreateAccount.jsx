@@ -13,6 +13,7 @@ const styles = theme => ({
   },
   textField: {
     width: 200,
+    marginRight: '20px'
   },
   menu: {
     width: 200,
