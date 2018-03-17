@@ -6,7 +6,7 @@ https://airhnr.herokuapp.com/
 
 Click on this GIF to watch a full demo!
 
-<a href="https://www.youtube.com/watch?v=FGRkHi5VPYQ"><img src="https://i.imgflip.com/26khbq.gif" title="Airhnr Demo" width="70%" border="10"/></a>
+<a href="https://www.youtube.com/watch?v=OQ_9YmYe4oY"><img src="https://i.imgflip.com/26khbq.gif" title="Airhnr Demo" width="70%" border="10"/></a>
 
 ## Team
 
