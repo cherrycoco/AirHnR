@@ -1,52 +1,49 @@
 # AirHnR
 
-> AirHnR is an AirBnB clone designed at Hack Reactor
+> An Airbnb for software engineers, heavily inspired by Airbnb's design and functionalities!
+
+https://airhnr.herokuapp.com/
+
+Click on this GIF to watch a full demo!
+
+<a href="https://www.youtube.com/watch?v=FGRkHi5VPYQ"><img src="https://i.imgflip.com/26khbq.gif" title="Airhnr Demo" width="70%" border="10"/></a>
 
 ## Team
 
-  - Cherry Xiu
+  - Cherry Xu
   - Cody Schindler
   - Jhovahn Gibbs
   - Mark Arce
   - Santiago Iraola
 
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Roadmap](#roadmap)
-1. [Contributing](#contributing)
-
 ## Usage
 
-> Some usage instructions
+1. Login or signup with your username
+2. Browse homes for rent in different locations
+3. Select date of travel
+4. View details of location
+5. Book location
+5. Pay for booking with Stripe
+6. E-mail confirmation sent to user inbox
+7. View upcoming trips and past trips
+9. Log out using the 'Log Out' button
 
 ## Requirements
 
 - Node 6.4.x
+- React
+- Postgresql 9.1.x
 - etc
 - etc
 
-## Development
+## Technology
+
+Powered by React JS, Express JS, Node.js, PostgreSQL, Bookshelf & Knex, Google API, Stripe API, and MaterialUI
 
 ### Installing Dependencies
 
 From within the root directory:
 
 ```sh
-npm install -g bower
 npm install
-bower install
 ```
-
-### Roadmap
-
-View the project roadmap [here](LINK_TO_DOC)
-
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
