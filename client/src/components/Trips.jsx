@@ -64,6 +64,7 @@ class Trips extends React.Component {
     this.getTripsbyUser(this.props.user.id);
   }
 
+  // fetch all trips by loggedin user
   getTripsbyUser (userId) {
     fetch(`/api/bookings/${userId}`)
     .then((response) => response.json())
@@ -83,12 +84,6 @@ class Trips extends React.Component {
             <Trip className='trip' key={idx} booking={trip} />
           ))}
         </div>
-        {/* <h2 id='upcoming-trips'>Upcoming Trips</h2>
-        <div className='trips'>
-          {this.state.bookings.map((trip, idx) => (
-            <Trip className='trip' key={idx} booking={trip} />
-          ))}
-        </div> */}
       </div>
     )
   }

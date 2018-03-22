@@ -26,6 +26,7 @@ class BookingGuest extends React.Component {
     };
   }
 
+  // conditional rendering of max selectable guests
   renderSelect () {
     let guests = [];
     for (let i = 1; i <= this.props.maxGuests; i++) {
@@ -37,6 +38,7 @@ class BookingGuest extends React.Component {
     });
   }  
 
+  // update the number of guests selected 
   handleChange (event) {
     this.setState({
       guests: event.target.value

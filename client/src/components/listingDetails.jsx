@@ -22,6 +22,7 @@ class ListingDetails extends React.Component {
     };
   }
 
+  // conditional render of number of maximum guest capacity
   renderGuests () {
     if (this.props.listing.max_guests === 1) {
       return (
@@ -40,6 +41,7 @@ class ListingDetails extends React.Component {
     }
   }
 
+  // conditional render of number of beds
   renderBeds () {
     if (this.props.listing.beds === 1) {
       return (
@@ -58,6 +60,7 @@ class ListingDetails extends React.Component {
     }
   }
 
+  // conditional rendering of number of bathrooms
   renderBathrooms () {
     if (this.props.listing.bathrooms === 1) {
       return (
@@ -76,6 +79,8 @@ class ListingDetails extends React.Component {
     }
   }
 
+  // conditional rendering of description (short or long)
+  // toggle state button changes the state of showDescription
   renderDescription () {
     if (!this.state.showDescription) {
       return (
@@ -94,6 +99,8 @@ class ListingDetails extends React.Component {
     }
   }
 
+
+  // render all the amenities, if amenity not available (strike through the text)
   renderAmenities () {
     return _.map(this.props.listing.amenities, (val, key) => {
       if (val) {
@@ -104,6 +111,7 @@ class ListingDetails extends React.Component {
     });
   }
 
+  // render all house rules
   renderHouseRules () {
     return _.map(this.props.listing.house_rules, (val, key) => {
       if (val) {
@@ -126,6 +134,7 @@ class ListingDetails extends React.Component {
     });
   }
 
+  // render cancellation policy
   renderCancellation () {
     if (this.props.listing.cancellation) {
       return (
@@ -147,6 +156,8 @@ class ListingDetails extends React.Component {
   render () {
     return (
       <div className='listing-wrapper'>
+
+        // the booking component 
         <div className='listing-booking'>
           <Booking 
           updateGuests={this.props.updateGuests} 
@@ -157,7 +168,6 @@ class ListingDetails extends React.Component {
           endDate={this.props.endDate} 
           startDate={this.props.startDate} 
           handleBookingClick={this.props.handleBookingClick} 
-          // booking={this.props.booking} 
           listing={this.props.listing} 
           button={true} 
           openLogin={this.props.openLogin}
@@ -165,6 +175,8 @@ class ListingDetails extends React.Component {
           isUserLoggedIn={this.props.isUserLoggedIn}
           />
         </div>
+
+        // Listing details
         <div className='listing-img'>
           <img src={this.props.listing.image_url}/> 
         </div>
@@ -183,8 +195,11 @@ class ListingDetails extends React.Component {
           {this.renderBathrooms()}
         </div>
         
+        // descriptions
         {this.renderDescription()}
         <div className='line-break2'></div>
+
+        // List of amenities
         <div className='listing-amenities'>
           <h3>Amenities</h3>
           <ul>
@@ -192,6 +207,8 @@ class ListingDetails extends React.Component {
           </ul>
         </div>
         <div className='line-break3'></div>
+
+        //House rules
         <div className='listing-houserules'>
           <h3>House Rules</h3>
           <ul>
@@ -199,15 +216,18 @@ class ListingDetails extends React.Component {
           </ul>
         </div>
         <div className='line-break4'></div>
+
+        //cancellation policy
         <div className='listing-cancellation'>
           <h3>Cancellations</h3>
           {this.renderCancellation()}
         </div>
         <div className='line-break5'></div>
+
+        // list rating and star rating
         <div className='listing-rating'>
           <h2>{`${this.props.listing.review_count} Reviews`}</h2>
         </div>
-        {/* {this.renderRating()} */}
         <div className='listing-rating-img'>
           <Stars
             rating={this.props.listing.average_stars}
@@ -216,6 +236,8 @@ class ListingDetails extends React.Component {
           />
         </div>
         <div className='line-break6'></div>
+
+        // Host information
         <div className='listing-host'>
           <h2>{`Hosted By ${this.props.listing.first_name}`}</h2>
           <p>{`${this.props.listing.user_address_city}, ${this.props.listing.user_address_region}, United States`}</p>
